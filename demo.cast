@@ -1,0 +1,11 @@
+{"version": 2, "width": 149, "height": 48, "timestamp": 1728300673, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.042267, "o", "\r\nThe default interactive shell is now zsh.\r\nTo update your account to use zsh, please run `chsh -s /bin/zsh`.\r\nFor more details, please visit https://support.apple.com/kb/HT208050.\r\n"]
+[0.048711, "o", "\u001b[?1034hbash-3.2$ "]
+[2.029484, "o", "gendiff /Users/Anisiya/Projects/frontend-project-46/file1.json file2.json"]
+[3.378043, "o", "\r\n"]
+[3.665277, "o", "{\r\n"]
+[3.665787, "o", "- follow : false\r\n"]
+[3.665916, "o", "  host : hexlet.io\r\n- proxy : 123.234.53.22\r\n- timeout : 50\r\n+ timeout : 20\r\n+ verbose : true\r\n"]
+[3.665945, "o", "}\r\n"]
+[3.669912, "o", "bash-3.2$ "]
+[10.269036, "o", "exit\r\n"]
