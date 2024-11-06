@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-import parse from '../src/gendiff.js';
 import { program } from 'commander';
-// const { program } = require('commander');
+import parse from '../src/gendiff.js';
 
 program
   .option('-V, --version', 'output the version number')
@@ -12,10 +11,5 @@ program
   .action((filepath1, filepath2) => {
     parse(filepath1, filepath2);
   });
-  
-
 
 program.parse();
-
-const options = program.opts();
-
