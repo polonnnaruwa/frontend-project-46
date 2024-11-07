@@ -1,8 +1,29 @@
-test('1 ne ravno 2', () => {
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import fs from 'fs';
+import parse from '../src/gendiff';
 
-    const text = parse(filepath1, filepath2);
-    expect(text).toBe('bad text');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-    gemfdghfmjgdiff('fixtures/1.json', 'fixtures/2.json')
-    expect(1).toBe(2);
+const getFixturePath = (filename) => join(__dirname, '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
+
+test('parse', () => {
+    const file1path = getFixturePath('file1.json');
+    const file2path = getFixturePath('file2.json');
+    const expectedResult = readFile('result');
+
+    const actualResult = parse(file1path, file2path);
+    expect(actualResult).toBe(expectedResult);
+});
+
+
+test('parse 2', () => {
+    const file1path = getFixturePath('file1.json');
+    const file2path = getFixturePath('file2.json');
+    const expectedResult = readFile('result');
+
+    const actualResult = parse(file1path, file2path);
+    expect(actualResult).toBe(expectedResult);
 });
