@@ -14,23 +14,24 @@ export default function parse(filepath1, filepath2) {
   const objectKeys2 = Object.keys(object2);
 
   const objectKeys = removeDublicates(objectKeys1.concat(objectKeys2));
-  console.log('{');
+  let output = '{\n';
 
   objectKeys.sort().forEach((objectKey) => {
     if (Object.hasOwn(object1, objectKey) && !Object.hasOwn(object2, objectKey)) {
-      console.log(`- ${objectKey} : ${object1[objectKey]}`);
+      output += `- ${objectKey} : ${object1[objectKey]}\n`;
     }
     if (!Object.hasOwn(object1, objectKey) && Object.hasOwn(object2, objectKey)) {
-      console.log(`+ ${objectKey} : ${object2[objectKey]}`);
+      output += `+ ${objectKey} : ${object2[objectKey]}\n`;
     }
     if (Object.hasOwn(object1, objectKey) && Object.hasOwn(object2, objectKey)) {
       if (object1[objectKey] === object2[objectKey]) {
-        console.log(`  ${objectKey} : ${object1[objectKey]}`);
+        output += `  ${objectKey} : ${object1[objectKey]}\n`;
       } else {
-        console.log(`- ${objectKey} : ${object1[objectKey]}`);
-        console.log(`+ ${objectKey} : ${object2[objectKey]}`);
+        output += `- ${objectKey} : ${object1[objectKey]}\n`;
+        output += `+ ${objectKey} : ${object2[objectKey]}\n`;
       }
     }
   });
-  console.log('}');
+  output += '}';
+  return output;
 }

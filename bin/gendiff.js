@@ -9,7 +9,8 @@ program
   .argument('<filepath1>', 'file path 1')
   .argument('<filepath2>', 'file path 2')
   .action((filepath1, filepath2) => {
-    parse(filepath1, filepath2);
+    const text = parse(filepath1, filepath2);
+    console.log(text);
   });
 
 program.parse();
