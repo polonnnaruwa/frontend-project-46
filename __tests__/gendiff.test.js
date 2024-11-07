@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => join(__dirname, '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test('parse', () => {
+test('parse diff 1-2', () => {
     const file1path = getFixturePath('file1.json');
     const file2path = getFixturePath('file2.json');
     const expectedResult = readFile('result');
@@ -19,11 +19,11 @@ test('parse', () => {
 });
 
 
-test('parse 2', () => {
+test('parse diff 1-3', () => {
     const file1path = getFixturePath('file1.json');
-    const file2path = getFixturePath('file2.json');
-    const expectedResult = readFile('result');
+    const file3path = getFixturePath('file3.json');
+    const expectedResult = readFile('result1-3');
 
-    const actualResult = parse(file1path, file2path);
+    const actualResult = parse(file1path, file3path);
     expect(actualResult).toBe(expectedResult);
 });
