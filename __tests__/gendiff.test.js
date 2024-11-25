@@ -27,3 +27,12 @@ test('parse diff 1-3', () => {
     const actualResult = parse(file1path, file3path);
     expect(actualResult).toBe(expectedResult);
 });
+
+test('parse yaml', () => {
+    const file1path = getFixturePath('file1.yml');
+    const file2path = getFixturePath('file2.yml');
+    const expectedResult = readFile('result');
+
+    const actualResult = parse(file1path, file2path);
+    expect(actualResult).toBe(expectedResult);
+})
