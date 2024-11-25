@@ -5,7 +5,7 @@ function removeDublicates(array) {
   return [...new Set(array)];
 }
 
-export default function parse(filepath1, filepath2) {
+export default function genDiff(filepath1, filepath2) {
   const fileContent1 = readFileSync(filepath1, 'utf8');
   const fileContent2 = readFileSync(filepath2, 'utf8');
   let object1;
@@ -20,6 +20,7 @@ export default function parse(filepath1, filepath2) {
   } else {
     object2 = JSON.parse(fileContent2);
   };
+  
 
   const objectKeys1 = Object.keys(object1);
   const objectKeys2 = Object.keys(object2);
