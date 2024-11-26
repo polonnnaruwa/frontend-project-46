@@ -1,0 +1,11 @@
+{"version": 2, "width": 134, "height": 52, "timestamp": 1732607929, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.027252, "o", "\r\nThe default interactive shell is now zsh.\r\nTo update your account to use zsh, please run `chsh -s /bin/zsh`.\r\nFor more details, please visit https://support.apple.com/kb/HT208050.\r\n\u001b[?1034hbash-3.2$ "]
+[1.050308, "o", "__fixtures__ Anisiya$ gendiff file1.yml file2.yml"]
+[2.076749, "o", "\r\n"]
+[2.078145, "o", "bash: __fixtures__: command not found\r\n"]
+[2.079081, "o", "bash-3.2$ "]
+[5.078456, "o", "__fixtures__ Anisiya$ gendiff file1.yml file2.yml"]
+[6.222076, "o", "\r\n"]
+[6.223511, "o", "bash: __fixtures__: command not found\r\n"]
+[6.224237, "o", "bash-3.2$ "]
+[10.174341, "o", "exit\r\n"]
