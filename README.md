@@ -10,3 +10,7 @@ target="_blank"><img src="https://asciinema.org/a/uCVR8Q8h96SEv514AyNQZccgf.svg"
 ## Formatters
 
 <a href="https://asciinema.org/a/rh9CAOpOAXw8NEqiuVLjk3ZY4" target="_blank"><img src="https://asciinema.org/a/rh9CAOpOAXw8NEqiuVLjk3ZY4.svg" /></a>
+
+### JSON
+
+<a href="https://asciinema.org/a/qTXU8IDHwnzs2RqoZtPsxe39h" target="_blank"><img src="https://asciinema.org/a/qTXU8IDHwnzs2RqoZtPsxe39h.svg" /></a>
