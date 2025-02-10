@@ -1,4 +1,5 @@
 import parseFile from './parsers.js';
+import getFormatter from './formatters/index.js';
 
 function removeDublicates(array) {
   return [...new Set(array)];
@@ -85,66 +86,11 @@ const makeInnerStruct = (object1, object2) => {
   return innerStruct;
 }
 
-const stylish = (innerStruct, property='', depth=0) => {
-  const output = [];
-  let prefix = '';
-  for (let i = 0; i < depth; i++) {
-    prefix += '    ';
-  }
-
-  if (property) {
-    const newPrefix = prefix.substring(4);
-    output.push(`${newPrefix}${property}: {`);
-  } else {
-    output.push(`${prefix}{`);
-  }
-
-  innerStruct.forEach((obj) => {
-    if(obj.action === 'added') {
-      if (Array.isArray(obj.new)) {
-        output.push(stylish(obj.new, `  + ${obj.property}`, depth+1));
-      } else {
-        output.push(`${prefix}  + ${obj.property}: ${obj.new}`);
-      }
-
-    } else if (obj.action === 'removed') {
-      if (Array.isArray(obj.old)) {
-        output.push(stylish(obj.old, `  - ${obj.property}`, depth+1));
-      } else {
-        output.push(`${prefix}  - ${obj.property}: ${obj.old}`);
-      }
-    } else if (obj.action === 'kept') {
-      if (Array.isArray(obj.old)) {
-        output.push(stylish(obj.old, `    ${obj.property}`, depth+1));
-      } else {
-        output.push(`${prefix}    ${obj.property}: ${obj.old}`);
-      }
-    } else if (obj.action === 'changed') {
-      if (Array.isArray(obj.old)) {
-        output.push(stylish(obj.old, `  - ${obj.property}`, depth+1));
-      } else {
-        output.push(`${prefix}  - ${obj.property}: ${obj.old}`);
-      }
-      if (Array.isArray(obj.new)) {
-        output.push(stylish(obj.new, `  + ${obj.property}`, depth+1));
-      } else {
-        output.push(`${prefix}  + ${obj.property}: ${obj.new}`);
-      }
-    }
-  });
-  output.push(`${prefix}}`);
-  return output.join('\n');
-}
-
-const formatters = {
-  stylish: stylish,
-};
-
 export default function genDiff(filepath1, filepath2, formatter='stylish') {
   const left = parseFile(filepath1);  
   const right = parseFile(filepath2);
   const innerStruct = makeInnerStruct(left, right);
-  const formatterFunc = formatters[formatter];
+  const formatterFunc = getFormatter(formatter);
   const output = formatterFunc(innerStruct);
   return output;
 }
@@ -195,9 +141,7 @@ export default function genDiff(filepath1, filepath2, formatter='stylish') {
 //   {
 //     action: 'kept', 
 //     property: 'group', 
-//     old: {}, 
-//     new: {}, 
-//     children: [
+//     old: [
 //       {action: 'changed', property: 'baz', old: 'bas', new: 'bars'},
 //       {action: 'kept', property: 'foo', old: 'foo', new: 'foo'},
 //       {action: 'changed', property: 'nest', old: {key: 'value'}, new: 'str'},

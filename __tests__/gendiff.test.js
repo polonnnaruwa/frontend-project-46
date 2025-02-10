@@ -25,4 +25,13 @@ test('genDiff yaml', () => {
 
     const actualResult = genDiff(file1path, file2path);
     expect(actualResult).toBe(expectedResult);
+});
+
+test('genDiff plain', () => {
+    const file1path = getFixturePath('file1.json');
+    const file2path = getFixturePath('file2.json');
+    const expectedResult = readFile('plain-result.txt');
+
+    const actualResult = genDiff(file1path, file2path, 'plain');
+    expect(actualResult).toBe(expectedResult);
 })
